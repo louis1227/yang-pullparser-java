@@ -1,0 +1,22 @@
+module testmodule-02identity {
+
+  identity id-01;
+
+  identity id-02 {  }
+  
+  identity id-03 {
+    base base-01;
+  }
+
+  identity id-04 {
+    status current;
+  }
+
+  identity id-05 {
+    description "desc-01";
+  }
+
+  identity id-06 {
+    reference "ref-01";
+  }
+}

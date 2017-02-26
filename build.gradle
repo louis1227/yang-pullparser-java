@@ -1,0 +1,57 @@
+//  build.gradle for yang-pullparser-java
+
+apply plugin: 'java'
+apply plugin: 'antlr'
+
+sourceCompatibility = 1.8 
+targetCompatibility = 1.8 
+List prefixRuntimeExcluded = [ 'antlr-runtime' ];
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  antlr 'org.antlr:antlr4:4.6'
+  testCompile 'junit:junit:4.12'
+  runtime 'org.antlr:antlr4-runtime:4.6'
+}
+
+task jarTool(type: Jar) {
+  manifest {
+    attributes "Main-Class" : "iwostaq.yppj.tool.AppMain"
+  }
+  archiveName = "${project.name}-tool.jar"
+  from "${buildDir}/classes/main"
+  from "${buildDir}/classes/tool"
+
+
+  from configurations.runtime.findAll {
+    dep -> !prefixRuntimeExcluded.any { dep.name.startsWith(it) }
+  }.collect {
+    it.isDirectory() ? it : zipTree(it)
+  }
+}
+
+sourceSets {
+  tool {
+    java {
+      srcDir 'src/tool/java'
+      compileClasspath += sourceSets.main.compileClasspath
+      compileClasspath += sourceSets.main.output
+    }
+  }
+}
+
+generateGrammarSource {
+  outputDirectory = file('src/main/java/iwostaq/yppj/g/')  
+}
+
+compileJava {
+  options.encoding = 'UTF-8'
+}
+
+jar {
+  dependsOn compileToolJava, jarTool
+}
+

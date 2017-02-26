@@ -1,0 +1,19 @@
+module testmodule-01revision {
+
+
+ revision 2007-01-01;
+ 
+  revision 2008-02-15 {
+    description "desc-01";
+  }
+
+
+    revision 2009-03-07 {
+      reference "ref-01";
+    }
+
+  revision 2010-04-21 {
+    reference "ref-02";
+    description "desc-02";
+  }
+}

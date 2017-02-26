@@ -1,0 +1,11 @@
+module testmodule-00comment {
+
+  // container ignored-container {
+  // }
+  /* container ignored-container2 {
+  
+  } */
+
+  organization "This string contains /* and */.";
+  description "// This string starts and ends with //.";
+}

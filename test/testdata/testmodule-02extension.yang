@@ -1,0 +1,32 @@
+module testmodule-02extension {
+
+  extension ext-01  ;
+
+  extension ext-02 {
+    argument arg-01;
+  }
+
+  extension ext-03 {
+    argument arg-02 { }
+  }
+
+  extension ext-04 { 
+    argument arg-03 {
+      yin-element true;
+    }
+  }
+
+  extension ext-05 {
+    argument arg-04 {
+      yin-element false;
+    }
+  }
+
+  extension ext-06 {
+    description "desc-01";
+  }
+
+  extension ext-07 {
+    reference "ref-01";
+  }
+}

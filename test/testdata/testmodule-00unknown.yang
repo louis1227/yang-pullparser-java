@@ -1,0 +1,12 @@
+module testmodule-00unknown {
+
+  import imp-01 {
+    prefix pre-01;
+  }
+
+  leaf l-01 {
+    pre-01:info "info-01"; 
+    type string;
+  }
+}
+

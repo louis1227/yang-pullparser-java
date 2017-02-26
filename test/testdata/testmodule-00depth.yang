@@ -1,0 +1,7 @@
+module testmodule-00depth {
+  container c1 {
+    container c2 {
+    
+    }
+  }
+}
