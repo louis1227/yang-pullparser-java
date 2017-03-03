@@ -95,6 +95,7 @@ public class YangPullParserImpl implements YangPullParser {
     case YangLexer.KW_feature:
     case YangLexer.KW_grouping:
     case YangLexer.KW_identity:
+    case YangLexer.KW_if_feature:
     case YangLexer.KW_import:
     case YangLexer.KW_include:
     case YangLexer.KW_leaf:

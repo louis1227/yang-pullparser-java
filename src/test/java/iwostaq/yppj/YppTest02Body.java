@@ -95,6 +95,77 @@ public class YppTest02Body {
   }
 
   @Test
+  public void parseFeature() {
+    try (FileReader fromFile = Util.getFileReader("testmodule-02feature.yang")) {
+      YangPullParser ypp = new YangPullParserImpl(fromFile);
+
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.MODULE, null, "testmodule-02feature");
+
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.FEATURE, null, "feat-01");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.FEATURE, null, "feat-01");
+
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.FEATURE, null, "feat-02");
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.IF_FEATURE, null, "iff-01");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.IF_FEATURE, null, "iff-01");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.FEATURE, null, "feat-02");
+
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.FEATURE, null, "feat-03");
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.IF_FEATURE, null, "iff-02");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.IF_FEATURE, null, "iff-02");
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.IF_FEATURE, null, "iff-03");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.IF_FEATURE, null, "iff-03");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.FEATURE, null, "feat-03");
+
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.FEATURE, null, "feat-04");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.STATUS, "obsolete");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.STATUS, "obsolete");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.FEATURE, null, "feat-04");
+
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.FEATURE, null, "feat-05");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.DESCRIPTION, "desc-01");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.DESCRIPTION, "desc-01");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.FEATURE, null, "feat-05");
+
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.FEATURE, null, "feat-06");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.REFERENCE, "ref-01");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.REFERENCE, "ref-01");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.FEATURE, null, "feat-06");
+
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.MODULE, null, "testmodule-02feature");
+      
+    } catch (Exception e) {
+      e.printStackTrace();
+      fail();
+    } 
+  }
+
+  @Test
   public void parseIdentity() {
     try (FileReader fromFile = Util.getFileReader("testmodule-02identity.yang")) {
       YangPullParser ypp = new YangPullParserImpl(fromFile);

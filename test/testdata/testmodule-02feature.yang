@@ -1,0 +1,25 @@
+module testmodule-02feature {
+
+  feature feat-01  ;
+
+  feature feat-02 {
+    if-feature iff-01 ;
+  }
+
+  feature feat-03 {
+    if-feature iff-02 ;
+    if-feature iff-03 ;
+  }
+
+  feature feat-04 { 
+    status obsolete;
+  }
+
+  feature feat-05 {
+    description "desc-01";
+  }
+
+  feature feat-06 {
+    reference "ref-01";
+  }
+}
