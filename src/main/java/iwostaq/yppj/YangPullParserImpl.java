@@ -129,15 +129,18 @@ public class YangPullParserImpl implements YangPullParser {
     case YangLexer.KW_organization:
     case YangLexer.KW_path:
     case YangLexer.KW_pattern:
+    case YangLexer.KW_position:
     case YangLexer.KW_prefix:
     case YangLexer.KW_presence:
     case YangLexer.KW_range:
     case YangLexer.KW_reference:
     case YangLexer.KW_refine:
+    case YangLexer.KW_require_instance:
     case YangLexer.KW_revision:
     case YangLexer.KW_revision_date:
     case YangLexer.KW_status:
     case YangLexer.KW_unique:
+    case YangLexer.KW_units:
     case YangLexer.KW_value:
     case YangLexer.KW_when:
     case YangLexer.KW_yang_version:
@@ -156,6 +159,7 @@ public class YangPullParserImpl implements YangPullParser {
       this.startStatementWithoutIdNorArg(tok.getType());
       break;
     default:
+      System.err.println(tok.getType());
       throw new YangPullParserException();
     }
     return this.lastEvent.getEventType();
