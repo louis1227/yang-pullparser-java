@@ -1,4 +1,6 @@
 module testmodule-02extension {
+  namespace "urn:ns-02extension";
+  prefix pre-01;
 
   extension ext-01  ;
 

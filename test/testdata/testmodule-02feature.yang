@@ -1,14 +1,16 @@
 module testmodule-02feature {
+  namespace "urn:ns-02feature";
+  prefix pre-01;
 
   feature feat-01  ;
 
   feature feat-02 {
-    if-feature iff-01 ;
+    if-feature feat-04 ;
   }
 
   feature feat-03 {
-    if-feature iff-02 ;
-    if-feature iff-03 ;
+    if-feature feat-01 ;
+    if-feature feat-02 ;
   }
 
   feature feat-04 { 

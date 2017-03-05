@@ -1,0 +1,23 @@
+module testmodule-02typedef {
+  namespace "urn:ns-02typedef";
+  prefix pre-01;
+
+  import testmodule-02type {
+    prefix r;
+  }
+
+  typedef td-01 {
+  
+    type r:td-01;
+   
+    units "u-01" ; 
+    default "def-01";
+    status deprecated;
+  }
+
+  typedef td-02 {
+    description "desc-01";
+    reference "ref-01";
+    type r:td-03;
+  }
+}

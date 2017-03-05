@@ -60,6 +60,16 @@ public class YppTest00Statement {
 
       ypp.next();
       Util.assertStartStatementWithId(ypp, StatementType.MODULE, null, "testmodule-00comment");
+
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-00comment");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-00comment");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
+      
       ypp.next();
       Util.assertStartStatementWithStringArg(ypp, StatementType.ORGANIZATION, "This string contains /* and */.");
       ypp.next();
@@ -82,7 +92,16 @@ public class YppTest00Statement {
   public void CheckIfGetDepthWorks() {
     try (FileReader fromFile = Util.getFileReader("testmodule-00depth.yang")) {
       YangPullParser ypp = new YangPullParserImpl(fromFile);
+
       ypp.next(); // module starts
+      assertEquals(1, ypp.getDepth());
+      ypp.next(); // namespace starts
+      assertEquals(2, ypp.getDepth());
+      ypp.next(); // namespace ends
+      assertEquals(1, ypp.getDepth());
+      ypp.next(); // prefix starts
+      assertEquals(2, ypp.getDepth());
+      ypp.next(); // prefix ends
       assertEquals(1, ypp.getDepth());
       ypp.next(); // container c1 starts
       assertEquals(2, ypp.getDepth());
@@ -115,27 +134,36 @@ public class YppTest00Statement {
       Util.assertStartStatementWithId(ypp, StatementType.MODULE, null, "testmodule-00unknown");
 
       ypp.next();
-      Util.assertStartStatementWithId(ypp, StatementType.IMPORT, null, "imp-01");
+      Util.assertStartStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-00unknown");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-00unknown");
       ypp.next();
       Util.assertStartStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
       ypp.next();
       Util.assertEndStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
+
       ypp.next();
-      Util.assertEndStatementWithId(ypp, StatementType.IMPORT, null, "imp-01");
+      Util.assertStartStatementWithId(ypp, StatementType.IMPORT, null, "testmodule-02extension");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.PREFIX, "pre-02");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.PREFIX, "pre-02");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.IMPORT, null, "testmodule-02extension");
 
       ypp.next();
       Util.assertStartStatementWithId(ypp, StatementType.LEAF, null, "l-01");
       ypp.next();
       assertEquals(EventType.STATEMENT_START, ypp.getEventType());
       assertEquals(StatementType.UNKNOWN, ypp.getStatementType());
-      assertEquals("pre-01", ypp.getNamespace());
-      assertEquals("info", ypp.getIdentifier());
+      assertEquals("pre-02", ypp.getNamespace());
+      assertEquals("ext-03", ypp.getIdentifier());
       assertEquals("info-01", ypp.getArgument());
       ypp.next();
       assertEquals(EventType.STATEMENT_END, ypp.getEventType());
       assertEquals(StatementType.UNKNOWN, ypp.getStatementType());
-      assertEquals("pre-01", ypp.getNamespace());
-      assertEquals("info", ypp.getIdentifier());
+      assertEquals("pre-02", ypp.getNamespace());
+      assertEquals("ext-03", ypp.getIdentifier());
       assertEquals("info-01", ypp.getArgument());
       ypp.next();
       Util.assertStartStatementWithId(ypp, StatementType.TYPE, null, "string");

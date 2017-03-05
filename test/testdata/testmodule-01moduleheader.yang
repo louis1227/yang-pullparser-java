@@ -1,8 +1,7 @@
 module testmodule-01moduleheader {
+  namespace "urn:ns-01moduleheader";
 
   prefix  pre-01 ;
-  
-    namespace  "http://uri.mydomain.org/ns";
-    
+
   yang-version 1; 
 }

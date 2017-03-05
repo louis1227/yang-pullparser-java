@@ -1,11 +1,13 @@
 module testmodule-02identity {
+  namespace "urn:ns-02identity";
+  prefix pre-01;
 
   identity id-01;
 
   identity id-02 {  }
   
   identity id-03 {
-    base base-01;
+    base id-01;
   }
 
   identity id-04 {

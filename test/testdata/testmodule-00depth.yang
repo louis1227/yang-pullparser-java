@@ -1,4 +1,7 @@
 module testmodule-00depth {
+  namespace "urn:ns-00depth";
+  prefix pre-01;
+
   container c1 {
     container c2 {
     

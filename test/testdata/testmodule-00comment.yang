@@ -1,5 +1,8 @@
 module testmodule-00comment {
 
+  namespace "urn:ns-00comment";
+  prefix pre-01;
+
   // container ignored-container {
   // }
   /* container ignored-container2 {

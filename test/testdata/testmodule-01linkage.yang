@@ -1,16 +1,15 @@
 module testmodule-01linkage {
+  namespace "urn:ns-01linkage";
+  prefix pre-01;
 
   include submodule-01;
-  
-  import external-module-01 {
-    prefix em01;
-    revision-date 2020-03-20;
-  }
-
 
   include submodule-02 {
     revision-date 2019-01-03;
   }
-  
-  import external-module-02;
+
+  import testmodule-01revision {
+    prefix em01;
+    revision-date 2008-02-15;
+  }
 }

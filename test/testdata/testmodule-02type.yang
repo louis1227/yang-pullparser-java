@@ -1,0 +1,123 @@
+module testmodule-02type {
+  namespace "urn:ns-02type";
+  prefix pre-01;
+
+  import testmodule-02identity {
+    prefix tm-02;
+  }
+
+  typedef td-01 {
+    type string;
+  }
+
+  typedef td-02 {
+    type int32 {
+      range "1..100";
+    }
+  }
+  
+  typedef td-03 {
+
+    type int64 {
+      range "1..100" {
+        error-message "erm-01";
+        error-app-tag "eat-01";
+        description "desc-01";
+        reference "ref-01";
+      }
+    }
+  }
+
+  typedef td-04 {
+
+    // decimal64-specification
+    type decimal64 {
+      fraction-digits 12;
+    }
+  }
+
+  typedef td-05 {
+
+    type string {
+      length "10"; 
+      pattern "pat-01";
+      pattern "pat-02" {
+        error-message "erm-02";
+        error-app-tag "eat-02";
+        description "desc-02";
+        reference "ref-02";
+      }
+    }
+  }
+
+  typedef td-06 {
+
+    type string {
+      length "20" {
+        error-message "erm-03";
+        error-app-tag "eat-03";
+        description "desc-03";
+        reference "ref-03";
+      } 
+    }
+  }
+  
+  typedef td-07 {
+    type enumeration {
+      enum en-01;
+      enum en-02 {
+        value 1;
+        description "desc-04";
+        reference "ref-04";
+      }
+    }
+  }
+  
+  typedef td-08 {
+    type leafref {
+      path "../l-01";
+    }
+  }
+
+  leaf l-01 {
+    type empty;
+  }
+
+  typedef td-09 {
+
+    type identityref {
+      base tm-02:id-05;
+    }
+  }
+  
+  typedef td-10 {
+
+    type instance-identifier {
+      require-instance false;
+    }
+  }
+  
+  typedef td-11 {
+
+    type bits {
+      bit bt-01;
+      bit bt-02 {
+        position 12;
+        status deprecated;
+        description "desc-05";
+        reference "ref-05";
+      }
+    }
+  }
+  
+  typedef td-12 {
+
+    type union {
+      type string;
+      type union {
+        type string;
+        type int32;
+      }    
+    }
+  }
+}

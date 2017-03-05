@@ -1,11 +1,13 @@
 module testmodule-00unknown {
+  namespace "urn:ns-00unknown";
+  prefix pre-01;
 
-  import imp-01 {
-    prefix pre-01;
+  import testmodule-02extension {
+    prefix pre-02;
   }
 
   leaf l-01 {
-    pre-01:info "info-01"; 
+    pre-02:ext-03 "info-01"; 
     type string;
   }
 }

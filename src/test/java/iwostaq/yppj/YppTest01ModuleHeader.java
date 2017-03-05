@@ -19,14 +19,13 @@ public class YppTest01ModuleHeader {
       Util.assertStartStatementWithId(ypp, StatementType.MODULE, null, "testmodule-01moduleheader");
 
       ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-01moduleheader");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-01moduleheader");
+      ypp.next();
       Util.assertStartStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
       ypp.next();
       Util.assertEndStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
-
-      ypp.next();
-      Util.assertStartStatementWithStringArg(ypp, StatementType.NAMESPACE, "http://uri.mydomain.org/ns");
-      ypp.next();
-      Util.assertEndStatementWithStringArg(ypp, StatementType.NAMESPACE, "http://uri.mydomain.org/ns");
 
       ypp.next();
       Util.assertStartStatementWithStringArg(ypp, StatementType.YANG_VERSION, "1");
@@ -51,22 +50,18 @@ public class YppTest01ModuleHeader {
       Util.assertStartStatementWithId(ypp, StatementType.MODULE, null, "testmodule-01linkage");
 
       ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-01linkage");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-01linkage");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
+
+      ypp.next();
       Util.assertStartStatementWithId(ypp, StatementType.INCLUDE, null, "submodule-01");
       ypp.next();
       Util.assertEndStatementWithId(ypp, StatementType.INCLUDE, null, "submodule-01");
-
-      ypp.next();
-      Util.assertStartStatementWithId(ypp, StatementType.IMPORT, null, "external-module-01");
-      ypp.next();
-      Util.assertStartStatementWithStringArg(ypp, StatementType.PREFIX, "em01");
-      ypp.next();
-      Util.assertEndStatementWithStringArg(ypp, StatementType.PREFIX, "em01");
-      ypp.next();
-      Util.assertStartStatementWithStringArg(ypp, StatementType.REVISION_DATE, "2020-03-20");
-      ypp.next();
-      Util.assertEndStatementWithStringArg(ypp, StatementType.REVISION_DATE, "2020-03-20");
-      ypp.next();
-      Util.assertEndStatementWithId(ypp, StatementType.IMPORT, null, "external-module-01");
 
       ypp.next();
       Util.assertStartStatementWithId(ypp, StatementType.INCLUDE, null, "submodule-02");
@@ -78,9 +73,17 @@ public class YppTest01ModuleHeader {
       Util.assertEndStatementWithId(ypp, StatementType.INCLUDE, null, "submodule-02");
 
       ypp.next();
-      Util.assertStartStatementWithId(ypp, StatementType.IMPORT, null, "external-module-02");
+      Util.assertStartStatementWithId(ypp, StatementType.IMPORT, null, "testmodule-01revision");
       ypp.next();
-      Util.assertEndStatementWithId(ypp, StatementType.IMPORT, null, "external-module-02");
+      Util.assertStartStatementWithStringArg(ypp, StatementType.PREFIX, "em01");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.PREFIX, "em01");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.REVISION_DATE, "2008-02-15");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.REVISION_DATE, "2008-02-15");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.IMPORT, null, "testmodule-01revision");
 
       ypp.next();
       Util.assertEndStatementWithId(ypp, StatementType.MODULE, null, "testmodule-01linkage");
@@ -97,6 +100,15 @@ public class YppTest01ModuleHeader {
 
       ypp.next();
       Util.assertStartStatementWithId(ypp, StatementType.MODULE, null, "testmodule-01meta");
+
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-01meta");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-01meta");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
 
       ypp.next();
       Util.assertStartStatementWithStringArg(ypp, StatementType.ORGANIZATION, "org-01");
@@ -135,30 +147,39 @@ public class YppTest01ModuleHeader {
       Util.assertStartStatementWithId(ypp, StatementType.MODULE, null, "testmodule-01revision");
 
       ypp.next();
-      Util.assertStartStatementWithStringArg(ypp, StatementType.REVISION, "2007-01-01");
+      Util.assertStartStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-01revision");
       ypp.next();
-      Util.assertEndStatementWithStringArg(ypp, StatementType.REVISION, "2007-01-01");
+      Util.assertEndStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-01revision");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
 
       ypp.next();
-      Util.assertStartStatementWithStringArg(ypp, StatementType.REVISION, "2008-02-15");
+      Util.assertStartStatementWithStringArg(ypp, StatementType.REVISION, "2010-04-21");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.REVISION, "2010-04-21");
+
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.REVISION, "2009-03-07");
       ypp.next();
       Util.assertStartStatementWithStringArg(ypp, StatementType.DESCRIPTION, "desc-01");
       ypp.next();
       Util.assertEndStatementWithStringArg(ypp, StatementType.DESCRIPTION, "desc-01");
       ypp.next();
-      Util.assertEndStatementWithStringArg(ypp, StatementType.REVISION, "2008-02-15");
+      Util.assertEndStatementWithStringArg(ypp, StatementType.REVISION, "2009-03-07");
 
       ypp.next();
-      Util.assertStartStatementWithStringArg(ypp, StatementType.REVISION, "2009-03-07");
+      Util.assertStartStatementWithStringArg(ypp, StatementType.REVISION, "2008-02-15");
       ypp.next();
       Util.assertStartStatementWithStringArg(ypp, StatementType.REFERENCE, "ref-01");
       ypp.next();
       Util.assertEndStatementWithStringArg(ypp, StatementType.REFERENCE, "ref-01");
       ypp.next();
-      Util.assertEndStatementWithStringArg(ypp, StatementType.REVISION, "2009-03-07");
+      Util.assertEndStatementWithStringArg(ypp, StatementType.REVISION, "2008-02-15");
 
       ypp.next();
-      Util.assertStartStatementWithStringArg(ypp, StatementType.REVISION, "2010-04-21");
+      Util.assertStartStatementWithStringArg(ypp, StatementType.REVISION, "2007-01-01");
       ypp.next();
       Util.assertStartStatementWithStringArg(ypp, StatementType.REFERENCE, "ref-02");
       ypp.next();
@@ -168,7 +189,7 @@ public class YppTest01ModuleHeader {
       ypp.next();
       Util.assertEndStatementWithStringArg(ypp, StatementType.DESCRIPTION, "desc-02");
       ypp.next();
-      Util.assertEndStatementWithStringArg(ypp, StatementType.REVISION, "2010-04-21");
+      Util.assertEndStatementWithStringArg(ypp, StatementType.REVISION, "2007-01-01");
 
       ypp.next();
       Util.assertEndStatementWithId(ypp, StatementType.MODULE, null, "testmodule-01revision");

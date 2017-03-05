@@ -1,4 +1,6 @@
 module testmodule-01meta {
+  namespace "urn:ns-01meta";
+  prefix pre-01;
 
   organization "org-01";
 
