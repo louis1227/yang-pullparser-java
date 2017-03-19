@@ -159,7 +159,6 @@ public class YangPullParserImpl implements YangPullParser {
       this.startStatementWithoutIdNorArg(tok.getType());
       break;
     default:
-      System.err.println(tok.getType());
       throw new YangPullParserException();
     }
     return this.lastEvent.getEventType();

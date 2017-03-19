@@ -176,11 +176,11 @@ public class YppTest02Body {
 
       ypp.next();
       Util.assertEndStatementWithId(ypp, StatementType.MODULE, null, "testmodule-02feature");
-      
+
     } catch (Exception e) {
       e.printStackTrace();
       fail();
-    } 
+    }
   }
 
   @Test
@@ -331,7 +331,7 @@ public class YppTest02Body {
       YangPullParser ypp = new YangPullParserImpl(fromFile);
       ypp.next();
       Util.assertStartStatementWithId(ypp, StatementType.MODULE, null, "testmodule-02type");
-  
+
       ypp.next();
       Util.assertStartStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-02type");
       ypp.next();
@@ -349,7 +349,7 @@ public class YppTest02Body {
       Util.assertEndStatementWithStringArg(ypp, StatementType.PREFIX, "tm-02");
       ypp.next();
       Util.assertEndStatementWithId(ypp, StatementType.IMPORT, null, "testmodule-02identity");
-    
+
       ypp.next();
       Util.assertStartStatementWithId(ypp, StatementType.TYPEDEF, null, "td-01");
       ypp.next();
@@ -450,7 +450,7 @@ public class YppTest02Body {
       Util.assertEndStatementWithId(ypp, StatementType.TYPE, null, "string");
       ypp.next();
       Util.assertEndStatementWithId(ypp, StatementType.TYPEDEF, null, "td-05");
-     
+
       ypp.next();
       Util.assertStartStatementWithId(ypp, StatementType.TYPEDEF, null, "td-06");
       ypp.next();
@@ -614,7 +614,7 @@ public class YppTest02Body {
       Util.assertEndStatementWithId(ypp, StatementType.TYPE, null, "union");
       ypp.next();
       Util.assertEndStatementWithId(ypp, StatementType.TYPEDEF, null, "td-12");
-      
+
       ypp.next();
       Util.assertEndStatementWithId(ypp, StatementType.MODULE, null, "testmodule-02type");
     } catch (Exception e) {
@@ -623,4 +623,86 @@ public class YppTest02Body {
     }
   }
 
+  @Test
+  public void parseGrouping() {
+    try (FileReader fromFile = Util.getFileReader("testmodule-02grouping.yang")) {
+      YangPullParser ypp = new YangPullParserImpl(fromFile);
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.MODULE, null, "testmodule-02grouping");
+  
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-02grouping");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.NAMESPACE, "urn:ns-02grouping");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.PREFIX, "pre-01");
+
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.GROUPING, null, "gr-01");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.GROUPING, null, "gr-01");
+
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.GROUPING, null, "gr-02");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.GROUPING, null, "gr-02");
+
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.GROUPING, null, "gr-03");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.STATUS, "current");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.STATUS, "current");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.DESCRIPTION, "desc-01");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.DESCRIPTION, "desc-01");
+      ypp.next();
+      Util.assertStartStatementWithStringArg(ypp, StatementType.REFERENCE, "ref-01");
+      ypp.next();
+      Util.assertEndStatementWithStringArg(ypp, StatementType.REFERENCE, "ref-01");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.GROUPING, null, "gr-03");
+
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.GROUPING, null, "gr-04");
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.TYPEDEF, null, "td-01");
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.TYPE, null, "string");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.TYPE, null, "string");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.TYPEDEF, null, "td-01");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.GROUPING, null, "gr-04");
+      
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.GROUPING, null, "gr-05");
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.GROUPING, null, "sgr-01");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.GROUPING, null, "sgr-01");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.GROUPING, null, "gr-05");
+
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.GROUPING, null, "gr-06");
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.LEAF, null, "l-01");
+      ypp.next();
+      Util.assertStartStatementWithId(ypp, StatementType.TYPE, null, "int32");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.TYPE, null, "int32");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.LEAF, null, "l-01");
+      ypp.next();
+      Util.assertEndStatementWithId(ypp, StatementType.GROUPING, null, "gr-06");
+    } catch (Exception e) {
+      e.printStackTrace();
+      fail();
+    }
+  }
 }

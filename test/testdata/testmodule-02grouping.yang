@@ -1,0 +1,31 @@
+module testmodule-02grouping {
+  namespace "urn:ns-02grouping";
+  prefix pre-01;
+
+  grouping gr-01;
+
+  grouping gr-02 {
+  }
+
+  grouping gr-03 {
+    status current;
+    description "desc-01";
+    reference "ref-01";
+  }
+  
+  grouping gr-04 {
+    typedef td-01 {
+      type string;
+    }
+  }
+
+  grouping gr-05 {
+    grouping sgr-01;
+  }
+
+  grouping gr-06 {
+    leaf l-01 {
+      type int32;
+    }
+  }
+}
