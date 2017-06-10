@@ -1,0 +1,44 @@
+module testmodule-03leaf {
+  namespace "urn:ns-03leaf";
+  prefix pre-01;
+  
+  leaf l-01 {
+    type string;
+  }
+
+  leaf l-02 {
+    when "when-01";
+    type string;
+    units "u-01";
+    must "must-01";
+    default "def-01";
+    status current;
+    mandatory true;
+    if-feature iff-01;
+    reference "ref-01";
+    if-feature iff-02;
+    config true;
+    description "desc-01";
+  }
+
+  leaf l-03 {
+    when "when-02" {
+      description "desc-02";
+      reference "ref-02";
+    }
+    type string;
+    must "must-02" {
+      error-message "em-01";
+      error-app-tag "eat-01";
+      reference "ref-03";
+      description "desc-03";
+    }
+    must "must-03" {
+      error-message "em-02";
+      error-app-tag "eat-02";
+      reference "ref-04";
+      description "desc-04";
+    }
+  }
+}
+

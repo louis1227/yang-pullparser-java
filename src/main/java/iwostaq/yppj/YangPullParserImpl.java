@@ -121,6 +121,7 @@ public class YangPullParserImpl implements YangPullParser {
     case YangLexer.KW_fraction_digits:
     case YangLexer.KW_key:
     case YangLexer.KW_length:
+    case YangLexer.KW_mandatory:
     case YangLexer.KW_max_elements:
     case YangLexer.KW_min_elements:
     case YangLexer.KW_must:
