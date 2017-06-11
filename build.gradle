@@ -24,7 +24,7 @@ task jarTool(type: Jar) {
   archiveName = "${project.name}-tool.jar"
   from "${buildDir}/classes/main"
   from "${buildDir}/classes/tool"
-
+  from "${buildDir}/resources/main"
 
   from configurations.runtime.findAll {
     dep -> !prefixRuntimeExcluded.any { dep.name.startsWith(it) }

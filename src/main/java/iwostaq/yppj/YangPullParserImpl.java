@@ -160,7 +160,7 @@ public class YangPullParserImpl implements YangPullParser {
       this.startStatementWithoutIdNorArg(tok.getType());
       break;
     default:
-      throw new YangPullParserException();
+      throw new YangPullParserException("err.unknown_token", tok.getText());
     }
     return this.lastEvent.getEventType();
   }
@@ -277,7 +277,7 @@ public class YangPullParserImpl implements YangPullParser {
     case YangLexer.S_SEMICOLON:
       break;
     default:
-      throw new YangPullParserException();
+      throw new YangPullParserException("err.unexpected_token", nextToken.getText());
     }
 
     this.eventStack.push(event);
@@ -300,7 +300,7 @@ public class YangPullParserImpl implements YangPullParser {
     case YangLexer.S_SEMICOLON:
       break;
     default:
-      throw new YangPullParserException();
+      throw new YangPullParserException("err.unexpected_token", nextToken.getText());
 
     }
 
@@ -322,7 +322,7 @@ public class YangPullParserImpl implements YangPullParser {
     case YangLexer.S_SEMICOLON:
       break;
     default:
-      throw new YangPullParserException();
+      throw new YangPullParserException("err.unexpected_token", nextToken.getText());
     }
 
     this.eventStack.push(event);
@@ -347,7 +347,7 @@ public class YangPullParserImpl implements YangPullParser {
     case YangLexer.S_SEMICOLON:
       break;
     default:
-      throw new YangPullParserException();
+      throw new YangPullParserException("err.unexpected_token", nextToken.getText());
     }
     this.eventStack.push(event);
     this.lastEvent = event;
@@ -415,7 +415,7 @@ public class YangPullParserImpl implements YangPullParser {
         this.consume();
         Token nextStringToken = this.getCurrentToken();
         if (nextStringToken.getType() != YangLexer.STRING) {
-          throw new YangPullParserException();
+          throw new YangPullParserException("err.unexpected_token", nextToken.getText());
         }
         sb.append(nextStringToken.getText());
         this.consume();
@@ -425,7 +425,7 @@ public class YangPullParserImpl implements YangPullParser {
       case YangLexer.S_SEMICOLON:
         break out;
       default:
-        throw new YangPullParserException();
+        throw new YangPullParserException("err.unexpected_token", nextToken.getText());
       }
     }
 
