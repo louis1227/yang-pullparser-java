@@ -10,13 +10,13 @@ import iwostaq.yppj.YangPullParser.StatementType;
  * A crawler that lists all the statements in a given Yang model.
  * 
  */
-public final class YangCrawler extends YangStackWriter {
+public final class NameEnumerator extends YangStackWriter {
 
-  public YangCrawler(Reader fromReader, PrintStream toOutputStream) {
+  public NameEnumerator(Reader fromReader, PrintStream toOutputStream) {
     super(fromReader, toOutputStream);
   }
 
-  public YangCrawler(Reader fromReader) {
+  public NameEnumerator(Reader fromReader) {
     super(fromReader);
   }
 
@@ -28,12 +28,12 @@ public final class YangCrawler extends YangStackWriter {
     String argument = ypp.getArgument();
     String elem = null;
     if (identifier == null) {
-      elem = stmt.name() + "(" + argument + ")";
+      elem = stmt.name();
     } else {
       if (namespace == null) {
-        elem = stmt.name() + "[" + identifier + "]";
+        elem = identifier;
       } else {
-        elem = stmt.name() + "[" + namespace + ":" + identifier + "]";
+        elem = namespace + ":" + identifier;
       }
     }
     super.stmtStack.push(elem);

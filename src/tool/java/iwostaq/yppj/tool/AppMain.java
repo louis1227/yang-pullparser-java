@@ -1,5 +1,6 @@
 package iwostaq.yppj.tool;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -17,6 +18,8 @@ public final class AppMain {
       "\tDisplays this messages",
       "crawl <file path>",
       "\tcrawls a YANG file given as the argument.",
+      "enum <file path>",
+      "\tenumerates all the names appeared in the YANG model."
   };
 
   public static void main(String[] args) throws IOException, YangPullParserException {
@@ -28,6 +31,9 @@ public final class AppMain {
     switch (args[0]) {
     case "crawl":
       yangCrawler(args[1]);
+      break;
+    case "name":
+      enumerateNames(args[1]);
       break;
     default:
       AppMain.help();
@@ -51,6 +57,13 @@ public final class AppMain {
     try (Reader fromReader = new FileReader(filePath)) {
       YangCrawler yangCrawler = new YangCrawler(fromReader);
       yangCrawler.crawl();
+    }
+  }
+
+  private static void enumerateNames(String filePath) throws IOException, YangPullParserException {
+    try (Reader fromReader = new FileReader(filePath)) {
+      NameEnumerator enumerator = new NameEnumerator(fromReader);
+      enumerator.crawl();
     }
   }
 }
